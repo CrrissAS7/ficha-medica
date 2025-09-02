@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ficha Médica - Formulario (AIEP Semana 3)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <div class="container" style="display:flex;justify-content:space-between;align-items:center">
+      <div>
+        <h1>Ficha Médica - Formulario (Entrega Semana 3)</h1>
+        <div class="muted">Formulario funcional con validaciones, búsqueda por apellido y persistencia en localStorage.</div>
+      </div>
+      <div class="pill">AIEP - Actividad Sumativa</div>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="grid">
+      <section class="card">
+        <div id="feedback" style="display:none" class="msg"></div>
+        <form id="fichaForm" autocomplete="off">
+          <div class="row">
+            <div style="flex:1">
+              <label for="rut">Rut *</label>
+              <input id="rut" name="rut" type="text" placeholder="12.345.678-5" required />
+            </div>
+            <div style="flex:1">
+              <label for="fecha_nacimiento">Fecha de Nacimiento *</label>
+              <input id="fecha_nacimiento" name="fecha_nacimiento" type="date" required />
+            </div>
+          </div>
+
+          <div class="row">
+            <div style="flex:1">
+              <label for="nombres">Nombres *</label>
+              <input id="nombres" name="nombres" type="text" placeholder="Juan Carlos" required />
+            </div>
+            <div style="flex:1">
+              <label for="apellidos">Apellidos *</label>
+              <input id="apellidos" name="apellidos" type="text" placeholder="Pérez González" required />
+            </div>
+          </div>
+
+          <div class="row">
+            <div style="flex:1">
+              <label for="direccion">Dirección *</label>
+              <input id="direccion" name="direccion" type="text" placeholder="Av. Siempre Viva 123" required />
+            </div>
+            <div style="width:180px">
+              <label for="ciudad">Ciudad *</label>
+              <select id="ciudad" name="ciudad" required>
+                <option value="">-- Seleccionar --</option>
+                <option>Santiago</option>
+                <option>Valparaíso</option>
+                <option>Concepción</option>
+                <option>Antofagasta</option>
+                <option>Otra</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="row">
+            <div style="flex:1">
+              <label for="telefono">Teléfono *</label>
+              <input id="telefono" name="telefono" type="tel" placeholder="+56 9 1234 5678" required />
+            </div>
+            <div style="flex:1">
+              <label for="email">Email *</label>
+              <input id="email" name="email" type="email" placeholder="nombre@ejemplo.com" required />
+            </div>
+          </div>
+
+          <div class="row">
+            <div style="flex:1">
+              <label for="estado_civil">Estado civil *</label>
+              <select id="estado_civil" name="estado_civil" required>
+                <option value="">-- Seleccionar --</option>
+                <option>Soltero/a</option>
+                <option>Casado/a</option>
+                <option>Divorciado/a</option>
+                <option>Viudo/a</option>
+                <option>Otro</option>
+              </select>
+            </div>
+            <div style="width:140px;display:flex;flex-direction:column;justify-content:flex-end">
+              <label class="muted">&nbsp;</label>
+              <div style="display:flex;gap:8px;">
+                <button id="saveBtn" type="button">Guardar</button>
+                <button id="clearBtn" type="button" class="secondary small">Limpiar</button>
+                <button id="closeBtn" type="button" class="secondary small">Cerrar</button>
+              </div>
+            </div>
+          </div>
+
+          <div style="margin-top:12px">
+            <label for="comentarios">Comentarios</label>
+            <textarea id="comentarios" name="comentarios" rows="3" placeholder="Alergias, observaciones médicas, etc."></textarea>
+          </div>
+        </form>
+
+        <div style="display:flex;gap:8px;margin-top:14px;align-items:center">
+          <button id="exportBtn" type="button" class="secondary small">Exportar JSON</button>
+          <label for="importFile" class="secondary small" style="padding:8px;border-radius:8px;cursor:pointer">Importar JSON
+            <input id="importFile" type="file" accept="application/json" style="display:none" /></label>
+          <button id="injectDemo" type="button" class="secondary small">Cargar demo</button>
+          <div class="muted" style="margin-left:auto">* Todos los campos y botones están validados.</div>
+        </div>
+      </section>
+
+      <aside class="card">
+        <h3 style="margin-top:0;margin-bottom:8px">Buscar por Apellido</h3>
+        <div style="display:flex;gap:8px;margin-bottom:12px">
+          <input id="searchApellido" type="text" placeholder="Ingrese apellido a buscar" />
+          <button id="searchBtn" class="small" type="button">Buscar</button>
+        </div>
+        <div class="results" id="resultsArea">
+          <div class="muted">Resultados aparecerán aquí.</div>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
+
+
